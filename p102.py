@@ -10,5 +10,15 @@
 
 with open("data/p102_triangles.txt") as f:
     lines = f.readlines()
+    sum = 0
     for line in lines:
-        print(line.strip().split(","))
+        verts = list(map(int, line.strip().split(",")))
+        x1, y1, x2, y2, x3, y3 = verts
+        if y1 * x2 > y2 * x1:
+            if y1 * x3 < y3 * x1 and y2 * x3 > y3 * x2:
+                sum += 1
+        else:
+            if y1 * x3 > y3 * x1 and y2 * x3 < y3 * x2:
+                sum += 1
+
+    print(sum)
