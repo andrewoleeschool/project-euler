@@ -22,3 +22,21 @@
 # Consider the following tenth degree polynomial generating function: un = 1 − n + n2 − n3 + n4 − n5 + n6 − n7 + n8 − n9 + n10
 
 # Find the sum of FITs for the BOPs.
+
+import numpy as np
+
+n = 10
+
+def u(n: int) -> int:
+    return 1 - n + n**2 - n**3 + n**4 - n**5 + n**6 - n**7 + n**8 - n**9 + n**10
+
+vander = np.vander(range(1, n + 2), increasing=True)
+U = np.reshape(np.array([u(n) for n in range(1, n + 1)]), (n, 1))
+
+sum = 0
+for i in range(1, n + 1):
+    x = np.linalg.solve(vander[:i, :i], U[:i, :1])
+    fit = np.dot(vander[i, :i].flatten(), x.flatten())
+    sum += fit
+
+print(int(sum))
