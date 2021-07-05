@@ -40,3 +40,5 @@ for i in range(1, n + 1):
     sum += fit
 
 print(int(sum))
+
+# 37076114526

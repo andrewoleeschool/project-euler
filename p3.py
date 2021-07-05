@@ -18,3 +18,4 @@ while n > 1:
 
 print(max)
 
+# 6857

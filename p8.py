@@ -16,3 +16,5 @@ for i in range(len(str)):
         max = prod
     
 print(max)
+
+# 23514624000

@@ -11,4 +11,5 @@ for i in range(999, 900, -1):
             print(i * j)
             exit()
 
+# 906609
 # Not guarenteed to be largest, but seems to arrive at correct result for 3 digits

@@ -10,3 +10,5 @@ for a in range(1, 999):
         if a**2 + b**2 == c**2:
             print(a * b * c)
             exit()
+
+# 31875000

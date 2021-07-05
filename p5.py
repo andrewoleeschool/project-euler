@@ -25,3 +25,5 @@ for i in range(2, n):
         prod *= i ** math.floor(math.log(n - 1, i))
 
 print(prod)
+
+# 232792560

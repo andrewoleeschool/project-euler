@@ -18,3 +18,5 @@ while len(primes) < n:
     i += 1
 
 print(primes[-1])
+
+# 104743
