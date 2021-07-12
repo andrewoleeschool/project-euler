@@ -41,6 +41,7 @@ for i in range(n):
             maxProd = prod
 
 for i in range(n):
-    
+    for j in range (n - m + 1):
+        
 
 print(maxProd)
