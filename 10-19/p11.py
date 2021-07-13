@@ -27,21 +27,36 @@ grid = """08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48"""
 
+def maxProdRow(grid) -> int:
+    n, m = grid.shape
+    maxProd = 0
+    for i in range(n):
+        for j in range(m - 4 + 1):
+            prod = np.prod(grid[i, j:j + 4])
+            if prod > maxProd:
+                maxProd = prod
+    return maxProd
+
+def sheer(grid, rev=False):
+    n, m = grid.shape
+    M = np.zeros((n, m + n - 1), dtype=int)
+    M[:n, :m] += grid
+    for i in range(n):
+        if rev:
+            M[i] = np.roll(M[i], n - 1 - i)
+        else:
+            M[i] = np.roll(M[i], i)
+    return M
+
 grid = [list(map(int, line.split())) for line in grid.split("\n")]
 grid = np.array(grid)
 
-n = 20
-m = 4
+prods = []
+prods.append(maxProdRow(grid))
+prods.append(maxProdRow(grid.T))
+prods.append(maxProdRow(sheer(grid).T))
+prods.append(maxProdRow(sheer(grid, rev=True).T))
 
-maxProd = 0
-for i in range(n):
-    for j in range(n - m + 1):
-        prod = np.prod(grid[i, j:j + m])
-        if prod > maxProd:
-            maxProd = prod
+print(max(prods))
 
-for i in range(n):
-    for j in range (n - m + 1):
-        
-
-print(maxProd)
+# 70600674
