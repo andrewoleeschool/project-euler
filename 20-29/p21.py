@@ -6,5 +6,34 @@
 
 # Evaluate the sum of all the amicable numbers under 10000.
 
+import math
+
+n = 10000
+
+def sumDivs(n: int) -> int:
+    nCpy = n
+    m = 2
+    sumDiv = 1
+    while n > 1:
+        e = 0
+        while n % m == 0:
+            n //= m
+            e += 1
+        if e > 0:
+            sumDiv *= (m**(e + 1) - 1) // (m - 1)
+        m += 1
+    return sumDiv - nCpy
+
 def amicable(n: int) -> bool:
+    m = sumDivs(n)
+    return m != n and sumDivs(m) == n
+
+sumAm = 0
+for i in range(2, n):
+    if amicable(i):
+        print(i)
+        sumAm += i
+
+print(sumAm)
     
+# 31626
